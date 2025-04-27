@@ -15,7 +15,7 @@ class Ticket {
     }
 }
 
-public class SynchronizedSaleTicket {
+public class SaleTicket {
 
     // 第二步：创建多个线程，调用资源类的操作方法
     public static void main(String[] args) {
