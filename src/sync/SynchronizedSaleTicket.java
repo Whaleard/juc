@@ -6,7 +6,7 @@ class Ticket {
     // 票数
     int number = 30;
 
-    // 操作方法
+    // 卖票方法
     synchronized void sale() {
         // 判断：是否有票
         if (number > 0) {
