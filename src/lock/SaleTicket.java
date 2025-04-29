@@ -42,7 +42,7 @@ public class SaleTicket {
                     ticket.sale();
                 }
             }
-        }, "a线程").start();
+        }, "窗口1线程").start();
 
         new Thread(new Runnable() {
             @Override
@@ -52,7 +52,7 @@ public class SaleTicket {
                     ticket.sale();
                 }
             }
-        }, "b线程").start();
+        }, "窗口2线程").start();
 
         new Thread(new Runnable() {
             @Override
@@ -62,6 +62,6 @@ public class SaleTicket {
                     ticket.sale();
                 }
             }
-        }, "c线程").start();
+        }, "窗口3线程").start();
     }
 }
