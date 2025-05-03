@@ -3,6 +3,7 @@ package lock;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CopyOnWriteArraySet;
 
@@ -66,7 +67,7 @@ public class CollectionSafetyIssues {
      */
     @Test
     public void test03() throws InterruptedException {
-        Map<String, String> set = new HashMap<>();
+        Map<String, String> set = new ConcurrentHashMap<>();
         for (int i = 0; i < 30; i++) {
             String key = String.valueOf(i);
             new Thread(new Runnable() {
