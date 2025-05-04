@@ -8,6 +8,9 @@ class Ticket {
     // 票数
     private int number = 30;
 
+    /**
+     * new ReentrantLock()默认创建非公平锁，若入参为true则创建公平锁，入参为false创建非公平锁
+     */
     // 创建可重入锁
     private final ReentrantLock lock = new ReentrantLock();
 
