@@ -1,4 +1,9 @@
 # juc
+进程、线程和管程
+    进程：资源分配的最小单位
+    线程：CPU调度和执行的最小单位
+    管程：Monitor(监视器)，一种同步机制，也就是锁
+
 Lock和synchronized相同点：
     1、都是可重入锁
 Lock和synchronized不同点：
