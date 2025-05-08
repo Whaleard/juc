@@ -12,6 +12,10 @@
     注意：如果用户线程全部结束意味着程序需要完成的业务操作已经结束了，守护线程随着JVM一同结束工作
          setDaemon(true)方法必须在start()之前设置，否则报IllegalThreadStateException异常
 
+Runnable接口与Callable接口的不同点
+    Runnable接口的run()方法没有返回值，方法上无法声明throws
+    Callable接口的call()方法有返回值，方法上可以声明throws
+
 Lock和synchronized相同点：
     1、都是可重入锁
 Lock和synchronized不同点：
