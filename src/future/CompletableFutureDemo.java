@@ -1,4 +1,4 @@
-package instance;
+package future;
 
 import org.junit.Test;
 
@@ -20,16 +20,16 @@ class MyThread implements Runnable {
 /**
  * 实现Callable接口
  */
-class MyThread2 implements Callable {
+class MyThread2 implements Callable<Integer> {
 
     @Override
-    public Object call() throws Exception {
+    public Integer call() throws Exception {
         System.out.println("============通过实现Callable接口创建线程============");
         return 200;
     }
 }
 
-public class MultithreadedImplementationMode {
+public class CompletableFutureDemo {
 
     @Test
     public void testRunnable() {
@@ -41,7 +41,7 @@ public class MultithreadedImplementationMode {
         // FutureTask
         FutureTask<Integer> futureTask = new FutureTask<>(new MyThread2());
         // 创建一个线程
-        new Thread(futureTask, "BB").start();
+        new Thread(futureTask, "t1").start();
         while (!futureTask.isDone()) {
             System.out.println("wait......");
         }
