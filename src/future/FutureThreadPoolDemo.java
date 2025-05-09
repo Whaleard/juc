@@ -90,7 +90,7 @@ public class FutureThreadPoolDemo {
         long endTime = System.currentTimeMillis();
         System.out.println("======花费时间：" + (endTime - startTime) + "毫秒");
 
-        // 关闭线程池
+        // 平缓关闭线程池，停止接受新任务，但会等待正在执行的任务和队列中的任务完成‌
         threadPool.shutdown();
 
         System.out.println(Thread.currentThread().getName() + "======end");
