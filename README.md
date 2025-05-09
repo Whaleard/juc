@@ -16,6 +16,10 @@ Runnable接口与Callable接口的不同点
     Runnable接口的run()方法没有返回值，方法上无法声明throws
     Callable接口的call()方法有返回值，方法上可以声明throws
 
+Future接口
+    Future接口定义了操作异步任务执行的一些方法，如获取异步任务的执行结果、取消任务的执行、判断任务是否被取消、判断任务执行是否完毕等。实现类为FutureTask
+    Future接口可以为主线程开一个分支任务，专门为主线程处理耗时费力的复杂业务，让主线程继续处理其他任务或者先行结束，再通过Future获取计算结果
+
 Lock和synchronized相同点：
     1、都是可重入锁
 Lock和synchronized不同点：
