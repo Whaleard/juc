@@ -45,6 +45,12 @@ sleep()和wait()
         2、通过new Thread()创建的线程默认是用户线程，通过setDaemon(true)可以将用户线程变为守护线程。
         2、 setDaemon(true)方法必须在start()之前设置，否则报IllegalThreadStateException异常。
 
+Synchronized关键字
+    synchronized是Java中的关键字，是一种同步锁。它可以修饰以下几种对象
+        1、修饰代码块，被修饰的代码块称为同步代码块，其作用的范围是大括号内的代码，作用的对象是调用这个方法的对象。
+        2、修饰方法，被修饰的方法称为同步方法，其作用的范围是整个方法，作用的对象是调用这个方法的对象。
+    
+
 Runnable接口与Callable接口的不同点
     Runnable接口的run()方法没有返回值，方法上无法声明throws
     Callable接口的call()方法有返回值，方法上可以声明throws
