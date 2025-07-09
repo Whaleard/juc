@@ -1,20 +1,15 @@
 package base;
 
-import org.junit.Test;
-
 import java.util.concurrent.TimeUnit;
 
 public class DaemonDemo {
 
     public static void main(String[] args) {
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // isDaemon()判断线程是否是守护线程
-                System.out.println(Thread.currentThread().getName() + "开始运行，" + (Thread.currentThread().isDaemon() ? "守护线程" : "用户线程"));
-                while (true) {
+        Thread t1 = new Thread(() -> {
+            // isDaemon()判断线程是否是守护线程
+            System.out.println(Thread.currentThread().getName() + "开始运行，" + (Thread.currentThread().isDaemon() ? "守护线程" : "用户线程"));
+            while (true) {
 
-                }
             }
         }, "t1");
 
