@@ -1,20 +1,21 @@
 package sync;
 
+/**
+ * synchronized为隐式可重入锁，可重入锁又叫递归锁
+ */
 public class ReentrantAndNonReentrantLock {
 
     public static void main(String[] args) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                synchronized (this) {
-                    System.out.println(Thread.currentThread().getName() + "：外层");
+        Object o = new Object();
+        new Thread(() -> {
+            synchronized (o) {
+                System.out.println(Thread.currentThread().getName() + "：外层");
 
-                    synchronized (this) {
-                        System.out.println(Thread.currentThread().getName() + "：中层");
+                synchronized (o) {
+                    System.out.println(Thread.currentThread().getName() + "：中层");
 
-                        synchronized (this) {
-                            System.out.println(Thread.currentThread().getName() + "：内层");
-                        }
+                    synchronized (o) {
+                        System.out.println(Thread.currentThread().getName() + "：内层");
                     }
                 }
             }
