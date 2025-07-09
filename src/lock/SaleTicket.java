@@ -35,33 +35,24 @@ public class SaleTicket {
         // 创建Ticket对象
         Ticket ticket = new Ticket();
         // 创建三个线程
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // 调用卖票方法
-                for (int i = 0; i < 40; i++) {
-                    ticket.sale();
-                }
+        new Thread(() -> {
+            // 调用卖票方法
+            for (int i = 0; i < 40; i++) {
+                ticket.sale();
             }
         }, "窗口1线程").start();
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // 调用卖票方法
-                for (int i = 0; i < 40; i++) {
-                    ticket.sale();
-                }
+        new Thread(() -> {
+            // 调用卖票方法
+            for (int i = 0; i < 40; i++) {
+                ticket.sale();
             }
         }, "窗口2线程").start();
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // 调用卖票方法
-                for (int i = 0; i < 40; i++) {
-                    ticket.sale();
-                }
+        new Thread(() -> {
+            // 调用卖票方法
+            for (int i = 0; i < 40; i++) {
+                ticket.sale();
             }
         }, "窗口3线程").start();
     }
