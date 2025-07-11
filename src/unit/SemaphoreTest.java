@@ -5,7 +5,7 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 6辆汽车停3个停车位
+ * 案例：6辆汽车停3个停车位
  */
 public class SemaphoreTest {
 
@@ -15,25 +15,22 @@ public class SemaphoreTest {
 
         // 模拟6辆汽车
         for (int i = 1; i <= 6; i++) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    // 抢占
-                    try {
-                        semaphore.acquire();
+            new Thread(() -> {
+                // 抢占
+                try {
+                    semaphore.acquire();
 
-                        System.out.println(Thread.currentThread().getName() + "抢到了车位");
+                    System.out.println(Thread.currentThread().getName() + "抢到了车位");
 
-                        // 设置随机停车时间
-                        TimeUnit.SECONDS.sleep(new Random().nextInt(5));
+                    // 设置随机停车时间
+                    TimeUnit.SECONDS.sleep(new Random().nextInt(5));
 
-                        System.out.println(Thread.currentThread().getName() + "离开了车位");
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    } finally {
-                        // 释放
-                        semaphore.release();
-                    }
+                    System.out.println(Thread.currentThread().getName() + "离开了车位");
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                } finally {
+                    // 释放
+                    semaphore.release();
                 }
             }, String.valueOf(i)).start();
         }
