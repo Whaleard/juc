@@ -27,8 +27,7 @@ public class BlockingQueueIssues {
         System.out.println(blockingQueue.add("b"));
         System.out.println(blockingQueue.add("c"));
         System.out.println(blockingQueue.element());
-
-        // System.out.println(blockingQueue.add("d"));
+        System.out.println(blockingQueue.add("d"));
 
         /*
             remove()：移除元素
@@ -38,8 +37,7 @@ public class BlockingQueueIssues {
         System.out.println(blockingQueue.remove());
         System.out.println(blockingQueue.remove());
         System.out.println(blockingQueue.remove());
-
-        // System.out.println(blockingQueue.remove());
+        System.out.println(blockingQueue.remove());
     }
 
     /**
@@ -71,8 +69,9 @@ public class BlockingQueueIssues {
         System.out.println(blockingQueue.poll());
     }
 
-    /*
-        阻塞
+    /**
+     * 阻塞
+     * @throws InterruptedException
      */
     @Test
     public void test03() throws InterruptedException {
@@ -87,7 +86,7 @@ public class BlockingQueueIssues {
         blockingQueue.put("a");
         blockingQueue.put("b");
         blockingQueue.put("c");
-        // blockingQueue.put("d");
+        blockingQueue.put("d");
 
         /*
             take()：移除元素
@@ -97,11 +96,12 @@ public class BlockingQueueIssues {
         System.out.println(blockingQueue.take());
         System.out.println(blockingQueue.take());
         System.out.println(blockingQueue.take());
-        // System.out.println(blockingQueue.take());
+        System.out.println(blockingQueue.take());
     }
 
-    /*
-        超时
+    /**
+     * 超时
+     * @throws InterruptedException
      */
     @Test
     public void test04() throws InterruptedException {
@@ -116,7 +116,7 @@ public class BlockingQueueIssues {
         System.out.println(blockingQueue.offer("a"));
         System.out.println(blockingQueue.offer("b"));
         System.out.println(blockingQueue.offer("c"));
-        // System.out.println(blockingQueue.offer("d", 3L, TimeUnit.SECONDS));
+        System.out.println(blockingQueue.offer("d", 3L, TimeUnit.SECONDS));
 
         /*
             poll()：移除元素
