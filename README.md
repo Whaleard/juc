@@ -101,3 +101,12 @@ Lock和synchronized不同点：
     缺点：
         1、造成锁饥饿，一直读，没有写操作
         2、读时不能写，只有读完成之后，才可以写，写时可以读
+
+阻塞队列：
+    1、ArrayBlockingQueue
+    2、LinkedBlockingQueue
+    3、DelayQueue
+    4、PriorityBlockingQueue
+    5、SynchronousQueue
+    6、LinkedTransferQueue
+    7、LinkedBlockingDeque
