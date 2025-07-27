@@ -7,25 +7,40 @@ import java.util.concurrent.RecursiveTask;
 
 class MyTask extends RecursiveTask<Integer> {
 
-    // 拆分差值不能超过10
+    /**
+     * 拆分差值不能超过10
+     */
     private static final Integer DIFF_VALUE = 10;
 
-    // 拆分开始值
+    /**
+     * 拆分开始值
+     */
     private int begin;
 
-    // 拆分结束值
+    /**
+     * 拆分结束值
+     */
     private int end;
 
-    // 结果值
+    /**
+     * 结果值
+     */
     private int result;
 
-    // 有参构造
+    /**
+     * 有参构造
+     * @param begin
+     * @param end
+     */
     public MyTask(int begin, int end) {
         this.begin = begin;
         this.end = end;
     }
 
-    // 拆分和合并过程
+    /**
+     * 拆分和合并过程
+     * @return
+     */
     @Override
     protected Integer compute() {
         // 判断相加的两个数差值是否大于10
