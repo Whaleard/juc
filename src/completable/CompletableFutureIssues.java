@@ -17,12 +17,7 @@ public class CompletableFutureIssues {
      */
     @Test
     public void test01() throws ExecutionException, InterruptedException {
-        CompletableFuture<Void> completableFuture = CompletableFuture.runAsync(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println(Thread.currentThread().getName() + "执行中");
-            }
-        });
+        CompletableFuture<Void> completableFuture = CompletableFuture.runAsync(() -> System.out.println(Thread.currentThread().getName() + "执行中"));
         completableFuture.get();
     }
 
@@ -34,14 +29,11 @@ public class CompletableFutureIssues {
      */
     @Test
     public void test02() throws ExecutionException, InterruptedException {
-        CompletableFuture<Integer> completableFuture = CompletableFuture.supplyAsync(new Supplier<Integer>() {
-            @Override
-            public Integer get() {
-                System.out.println(Thread.currentThread().getName() + "执行中");
-                // 模拟异常
-                int i =  1 / 0;
-                return 1024;
-            }
+        CompletableFuture<Integer> completableFuture = CompletableFuture.supplyAsync(() -> {
+            System.out.println(Thread.currentThread().getName() + "执行中");
+            // 模拟异常
+            int i =  1 / 0;
+            return 1024;
         });
         completableFuture.whenComplete(new BiConsumer<Integer, Throwable>() {
 
