@@ -14,6 +14,7 @@ public class DaemonDemo {
         }, "t1");
 
         // 将t1设置为守护线程
+        // setDaemon(true)方法必须在start()之前设置，否则报IllegalThreadStateException异常
         t1.setDaemon(true);
         t1.start();
 
