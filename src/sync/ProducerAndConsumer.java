@@ -79,7 +79,7 @@ class Share {
 }
 
 /**
- * 生产者消费者问题
+ * synchronized关键字实现生产者消费者问题
  *
  * @author Mr.MC
  */
