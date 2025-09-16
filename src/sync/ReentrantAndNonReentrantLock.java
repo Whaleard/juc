@@ -2,6 +2,8 @@ package sync;
 
 /**
  * synchronized为隐式可重入锁，可重入锁又叫递归锁
+ *
+ * @author Mr.MC
  */
 public class ReentrantAndNonReentrantLock {
 

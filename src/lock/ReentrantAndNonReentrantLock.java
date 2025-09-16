@@ -5,6 +5,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * ReentrantLock为显示可重入锁
+ *
+ * @author Mr.MC
  */
 public class ReentrantAndNonReentrantLock {
 
