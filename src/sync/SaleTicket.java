@@ -14,8 +14,8 @@ class Ticket {
      */
     public synchronized void sale() {
         // 判断：是否有票
-        if (number > 0) {
-            System.out.println(Thread.currentThread().getName() + "：卖出第" + (number--) + "张票，剩下：" + number + "张票");
+        if (this.number > 0) {
+            System.out.println(Thread.currentThread().getName() + "：卖出第" + (this.number--) + "张票，剩下：" + this.number + "张票");
         }
     }
 }

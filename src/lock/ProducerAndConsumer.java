@@ -18,7 +18,7 @@ class Share {
      * 创建Lock
      */
     private Lock lock = new ReentrantLock();
-    private Condition condition = lock.newCondition();
+    private Condition condition = this.lock.newCondition();
 
     /**
      * 生产
@@ -26,20 +26,20 @@ class Share {
      */
     public void produce() throws InterruptedException {
         // 上锁
-        lock.lock();
+        this.lock.lock();
         try {
             // 第二步：判断、业务操作、通知其他线程
             // 判断number值是否为0，如果不是0，线程等待
             // 这里如果使用if判断会产生虚假唤醒问题
-            while (number != 0) {
-                condition.await();
+            while (this.number != 0) {
+                this.condition.await();
             }
             // 如果number值为0，进行+1操作
-            number++;
-            System.out.println(Thread.currentThread().getName() + "::" + number);
-            condition.signalAll();
+            this.number++;
+            System.out.println(Thread.currentThread().getName() + "::" + this.number);
+            this.condition.signalAll();
         } finally {
-            lock.unlock();
+            this.lock.unlock();
         }
     }
 
@@ -49,19 +49,19 @@ class Share {
      */
     public void consume() throws InterruptedException {
         // 上锁
-        lock.lock();
+        this.lock.lock();
         try {
             // 判断number值是否为1，如果不是1，线程等待
-            while (number != 1) {
-                condition.await();
+            while (this.number != 1) {
+                this.condition.await();
             }
             // 如果number值为0，进行-1操作
-            number--;
-            System.out.println(Thread.currentThread().getName() + "::" + number);
+            this.number--;
+            System.out.println(Thread.currentThread().getName() + "::" + this.number);
             // 通知其他线程
-            condition.signalAll();
+            this.condition.signalAll();
         } finally {
-            lock.unlock();
+            this.lock.unlock();
         }
     }
 }
