@@ -22,6 +22,8 @@ class Phone6 {
  * 问题六：两个静态同步方法，两部手机，先打印短信还是邮件
  * ============sendSMS============
  * ============sendEmail============
+ *
+ * @author Mr.MC
  */
 public class LockQuestion6 {
 

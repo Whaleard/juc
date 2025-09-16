@@ -24,6 +24,8 @@ class Phone3 {
  * ============sendSMS============
  *
  * 使用synchronized修饰的方法与不使用synchronized修饰的方法不会产生冲突
+ *
+ * @author Mr.MC
  */
 public class LockQuestion3 {
 

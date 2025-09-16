@@ -22,6 +22,8 @@ class Phone2 {
  * 问题二：短信方法内停4秒，先打印短信还是邮件
  * ============sendSMS============
  * ============sendEmail============
+ *
+ * @author Mr.MC
  */
 public class LockQuestion2 {
 

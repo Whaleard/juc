@@ -11,10 +11,6 @@ class Phone {
     public synchronized void sendSMS() {
         System.out.println("============sendSMS============");
     }
-
-    public void getHello() {
-        System.out.println("============getHello============");
-    }
 }
 
 /**
@@ -22,11 +18,13 @@ class Phone {
  * ============sendSMS============
  * ============sendEmail============
  *
- * 当synchronized用于一个实例方法时，锁实际上是由该实例对象持有的。
+ * 当synchronized作用于实例方法上，锁实际上是由该实例对象持有的。
  * 当一个线程访问该对象的同步方法时，它会锁定该对象，其他线程如果尝试访问该对象的同步方法将会被阻塞，直到锁被释放。
  *
  * 在同一时刻内，通过同一个对象去调用对应类中被synchronized修饰的实例方法，只能有一个线程访问成功，其他线程只能等待
  * 此时synchronized的锁对象为当前对象this
+ *
+ * @author Mr.MC
  */
 public class LockQuestion1 {
 

@@ -24,6 +24,8 @@ class Phone7 {
  * ============sendSMS============
  *
  * 类锁和对象锁是两种不同的锁，互不影响
+ *
+ * @author Mr.MC
  */
 public class LockQuestion7 {
 

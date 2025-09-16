@@ -26,6 +26,8 @@ class Phone5 {
  * 普通同步方法中synchronized锁的范围是当前实例对象，通常指this
  * 静态同步方法中synchronized锁的范围是当前类对象，例如Phone5.Class
  * 同步方法块中synchronized的锁是括号里配置的对象
+ *
+ * @author Mr.MC
  */
 public class LockQuestion5 {
 

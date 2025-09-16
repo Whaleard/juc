@@ -22,6 +22,8 @@ class Phone8 {
  * 问题八：一个静态同步方法，一个普通同步方法，两部手机，先打印短信还是邮件
  * ============sendEmail============
  * ============sendSMS============
+ *
+ * @author Mr.MC
  */
 public class LockQuestion8 {
 
