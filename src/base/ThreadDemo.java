@@ -9,13 +9,18 @@ import java.util.concurrent.FutureTask;
  *      2、实现Runnable接口，调用start()方法，无返回值
  *      3、实现Callable接口，有返回值
  *      4、使用线程池
+ *
+ * 注意：1、2、3三种方式最后都是通过Thread的start()方法来开启线程调用
+ *      调用start()方法会新建一个线程，而调用run()方法只有主线程执行
+ *
+ * @author Mr.MC
  */
 public class ThreadDemo {
 
     public static void main(String[] args) {
         // 继承Thread类
         MyThread t = new MyThread();
-        t.run();
+        t.start();
 
         // 实现Runnable接口
         MyRunnable mr = new MyRunnable();
