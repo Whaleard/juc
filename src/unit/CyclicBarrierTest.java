@@ -8,14 +8,20 @@ import java.util.concurrent.CyclicBarrier;
 
 /**
  * CyclicBarrier从英文单词可以看出大概就是循环阻塞的意思
- * 在使用中CyclicBarry的构造方法第一个参数是目标障碍数，每个线程执行CyclicBarrier的await()方法一次障碍数会减1并且执行该方法的线程被阻塞，
- * 直到目标障碍数被减为0，才会执行CyclicBarry构造方法第二个参数中传入的线程
+ *  1、在使用中CyclicBarry的构造方法第一个参数是目标障碍数，每个线程执行CyclicBarrier的await()方法一次障碍数会减1并且执行该方法的线程被阻塞，
+ *  2、直到目标障碍数被减为0，才会执行CyclicBarry构造方法第二个参数中传入的线程
+ *
+ *  简单来讲就是CyclicBarrier构造器中的参数线程被阻塞，直到await()被调用次数达到CyclicBarrier构造器参数中的数值，参数线程被唤醒
  *
  * 案例：集齐7颗龙珠就可以召唤神龙
+ *
+ * @author Mr.MC
  */
 public class CyclicBarrierTest {
 
-    // 创建固定值
+    /**
+     * 创建固定值
+     */
     private static final int NUMBER = 7;
 
     /**
