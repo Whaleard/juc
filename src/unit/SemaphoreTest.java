@@ -6,6 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 案例：6辆汽车停3个停车位
+ *
+ * @author Mr.MC
  */
 public class SemaphoreTest {
 
