@@ -11,8 +11,12 @@ import java.util.concurrent.TimeUnit;
  *  2、其他线程调用countDown()方法会将计数器减1（调用countDown()方法的线程不会阻塞）
  *  3、当计数器的值变为0时，因await()方法阻塞的线程会被唤醒，继续执行
  *
+ *  简单来讲就是await()方法阻塞直到countDown()方法将CountDownLatch构造器初始值减为0，主线程被唤醒
+ *
  * 案例一：6个同学陆续离开教室之后，班长锁门
  * 案例二：10位运动员准备完毕后，裁判发令，运动员进行比赛
+ *
+ * @author Mr.MC
  */
 public class CountDownLatchTest {
 
