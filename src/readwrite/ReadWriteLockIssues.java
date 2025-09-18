@@ -6,16 +6,26 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-// 资源类
+/**
+ * 资源类
+ */
 class MyCache {
 
-    // 创建map集合
+    /**
+     * 创建map集合
+     */
     private volatile Map<String, Object> map = new HashMap<>();
 
-    // 创建读写锁对象
+    /**
+     * 创建读写锁对象
+     */
     private ReadWriteLock lock = new ReentrantReadWriteLock();
 
-    // 写
+    /**
+     * 写操作
+     * @param key
+     * @param value
+     */
     public void write(String key, Object value) {
         // 添加写锁
         lock.writeLock().lock();
@@ -36,12 +46,16 @@ class MyCache {
 
     }
 
-    // 读
+    /**
+     * 读操作
+     * @param key
+     * @return
+     */
     public Object read(String key) {
         // 添加读锁
         lock.readLock().lock();
 
-        Object result = null;
+        Object result;
         try {
             System.out.println(Thread.currentThread().getName() + " 正在执行读操作" + key);
             TimeUnit.MICROSECONDS.sleep(300L);
@@ -62,6 +76,11 @@ class MyCache {
 
 }
 
+/**
+ * 读写问题
+ *
+ * @author Mr.MC
+ */
 public class ReadWriteLockIssues {
 
     public static void main(String[] args) throws InterruptedException {
@@ -70,12 +89,7 @@ public class ReadWriteLockIssues {
         // 创建线程写数据
         for (int i = 1; i <= 5; i++) {
             final int num = i;
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    myCache.write(num + "", num);
-                }
-            }, String.valueOf(i)).start();
+            new Thread(() -> myCache.write(num + "", num), String.valueOf(i)).start();
         }
 
         TimeUnit.MICROSECONDS.sleep(300L);
@@ -83,12 +97,7 @@ public class ReadWriteLockIssues {
         // 创建线程读数据
         for (int i = 1; i <= 5; i++) {
             final int num = i;
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    myCache.read(num + "");
-                }
-            }, String.valueOf(i)).start();
+            new Thread(() -> myCache.read(num + ""), String.valueOf(i)).start();
         }
     }
 }
