@@ -44,7 +44,7 @@ class Share {
     }
 
     /**
-     * 生产
+     * 生产（解决虚假唤醒问题）
      * @throws InterruptedException
      */
     public synchronized void produce2() throws InterruptedException {
@@ -62,7 +62,7 @@ class Share {
     }
 
     /**
-     * 消费
+     * 消费（解决虚假唤醒问题）
      * @throws InterruptedException
      */
     public synchronized void consume2() throws InterruptedException {
@@ -98,15 +98,15 @@ public class ProducerAndConsumer {
             }
         }, "生产者线程1").start();
 
-        new Thread(() -> {
-            for (int i = 0; i < 10; i++) {
-                try {
-                    share.produce();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }, "生产者线程2").start();
+        // new Thread(() -> {
+        //     for (int i = 0; i < 10; i++) {
+        //         try {
+        //             share.produce();
+        //         } catch (InterruptedException e) {
+        //             throw new RuntimeException(e);
+        //         }
+        //     }
+        // }, "生产者线程2").start();
 
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
@@ -118,14 +118,14 @@ public class ProducerAndConsumer {
             }
         }, "消费者线程1").start();
 
-        new Thread(() -> {
-            for (int i = 0; i < 10; i++) {
-                try {
-                    share.consume();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }, "消费者线程2").start();
+        // new Thread(() -> {
+        //     for (int i = 0; i < 10; i++) {
+        //         try {
+        //             share.consume();
+        //         } catch (InterruptedException e) {
+        //             throw new RuntimeException(e);
+        //         }
+        //     }
+        // }, "消费者线程2").start();
     }
 }
