@@ -55,9 +55,9 @@ Synchronized关键字
         2、修饰方法，被修饰的方法称为同步方法，其作用的范围是整个方法，作用的对象是调用这个方法的对象。
 
 synchronized实现同步的基础
-    1、普通同步方法中synchronized的锁是当前实例对象，通常指this
-    2、静态同步方法中synchronized的锁是当前类对象，例如xxx.Class
-    3、同步方法块中synchronized的锁是括号里配置的对象
+    1、普通同步方法声明上使用synchronized关键字时，默认的锁对象是this，即当前实例对象。
+    2、静态同步方法声明上使用synchronized关键字时，默认的锁对象是当前类的Class对象。
+    3、同步方法块中synchronized的锁是括号里配置的对象。
 
 Lock和synchronized相同点：
     1、都是可重入锁
