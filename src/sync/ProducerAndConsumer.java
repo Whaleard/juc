@@ -52,14 +52,6 @@ class Share {
         // 判断number值是否为0，如果不是0，线程等待
         // 这里如果使用if判断会产生虚假唤醒问题
         while (this.number != 0) {
-            /*
-                wait()方法
-                    用途：用于线程间协作的一个核心机制，使当前线程进入等待状态，释放当前对象锁，线程在等待期间会一直阻塞，直到满足特定条件被唤醒。
-                    原理：wait()方法释放的锁必须是当前对象（即调用wait()方法的对象实例）的锁。wait()方法是Object类的final方法，只能在同步上下文（如同步方法或同步代码块）中调用，
-                        并且调用前线程必须持有该对象的对象锁。调用wait()后，线程会释放当前持有的该对象锁，并进入等待状态，直到其他线程对该对象调用notify()或notifyAll()方法。
-                     注：如果尝试在非同步上下文中调用wait()，会抛出IllegalMonitorStateException异常。
-                        wait()和notify()必须针对同一个对象锁才能有效协作，否则通知可能不生效。
-             */
             this.wait();
         }
         // 如果number值为0，进行+1操作
@@ -76,12 +68,25 @@ class Share {
     public synchronized void consume2() throws InterruptedException {
         // 判断number值是否为1，如果不是1，线程等待
         while (this.number != 1) {
+            /*
+                wait()方法
+                    用途：用于线程间协作的一个核心机制，使当前线程进入等待状态，释放当前对象锁，线程在等待期间会一直阻塞，直到满足特定条件被唤醒。
+                    原理：wait()方法释放的锁必须是当前对象（即调用wait()方法的对象实例）的锁。wait()方法是Object类的final方法，只能在同步上下文（如同步方法或同步代码块）中调用。
+                        并且调用前线程必须持有该对象的对象锁。调用wait()后，线程会释放当前持有的该对象锁，并进入等待状态。
+                        等待线程会被维护在该对象的带带队列中，直到其他线程对该对象调用notify()或notifyAll()方法。
+
+                     注：如果尝试在非同步上下文中调用wait()，会抛出IllegalMonitorStateException异常。
+                        wait()和notify()必须针对同一个对象锁才能有效协作，否则通知可能不生效。
+             */
             this.wait();
         }
         // 如果number值为0，进行-1操作
         this.number--;
         System.out.println(Thread.currentThread().getName() + "::" + this.number);
-        // 通知其他线程
+        /*
+            notify()方法随机唤醒锁对象等待队列中的一个线程。
+            notifyAll()方法唤醒锁对象等待队列中的所有线程。
+         */
         this.notifyAll();
     }
 }
