@@ -43,13 +43,13 @@ public class CompletableFutureDemo {
         // 创建一个线程
         new Thread(futureTask, "t1").start();
         while (!futureTask.isDone()) {
-            System.out.println("wait......");
+            System.out.println("first time wait......");
         }
         // 调用FutureTask的get()方法
         System.out.println(futureTask.get());
 
         while (!futureTask.isDone()) {
-            System.out.println("wait......");
+            System.out.println("second time wait......");
         }
         System.out.println(futureTask.get());
     }
