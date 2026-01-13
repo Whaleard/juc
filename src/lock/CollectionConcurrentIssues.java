@@ -10,7 +10,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 /**
  * 集合线程安全问题
  */
-public class CollectionSafetyIssues {
+public class CollectionConcurrentIssues {
 
     /**
      * ArrayList线程不安全，若多个线程同时对ArrayList进行读写操作，会出现ConcurrentModificationException异常
