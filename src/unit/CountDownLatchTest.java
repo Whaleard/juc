@@ -62,7 +62,7 @@ public class CountDownLatchTest {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("裁判准备发令");
+        System.out.println("裁判发令");
         countDownLatch.countDown();
     }
 }
