@@ -66,6 +66,9 @@ class MyTask extends RecursiveTask<Integer> {
     }
 }
 
+/**
+ * @author Mr.MC
+ */
 public class ForkJoinIssues {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
