@@ -2,12 +2,15 @@ package queue;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 阻塞队列
+ *
+ * @author Mr.MC
+ */
 public class BlockingQueueIssues {
 
     /**
@@ -127,5 +130,60 @@ public class BlockingQueueIssues {
         System.out.println(blockingQueue.poll());
         System.out.println(blockingQueue.poll());
         System.out.println(blockingQueue.poll(3L, TimeUnit.SECONDS));
+    }
+
+    public static void main(String[] args) {
+        BlockingQueue<Integer> blockingQueue = new ArrayBlockingQueue(4);
+
+        new Thread(() -> {
+            try {
+                for (int i = 0; i < 10; i++) {
+                    blockingQueue.put(i);
+                    System.out.println(Thread.currentThread().getName() + "生产的产品是：" + i);
+                }
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }, "生产者1").start();
+
+        new Thread(() -> {
+            try {
+                for (int i = 10; i < 20; i++) {
+                    blockingQueue.put(i);
+                    System.out.println(Thread.currentThread().getName() + "生产的产品是：" + i);
+                }
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }, "生产者2").start();
+
+        try {
+            TimeUnit.SECONDS.sleep(5L);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        new Thread(() -> {
+            try {
+                for (int i = 0; i < 10; i++) {
+                    Integer product = blockingQueue.take();
+                    System.out.println(Thread.currentThread().getName() + "消费的产品是：" + product);
+                }
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }, "消费者1").start();
+
+        new Thread(() -> {
+            try {
+                for (int i = 0; i < 10; i++) {
+                    Integer product = blockingQueue.take();
+                    System.out.println(Thread.currentThread().getName() + "消费的产品是：" + product);
+                }
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }, "消费者2").start();
+
     }
 }
