@@ -9,6 +9,9 @@ import java.util.concurrent.*;
  */
 public class ThreadPoolIssues {
 
+    /**
+     * Executors创建固定大小线程池
+     */
     @Test
     public void test01() {
         // 创建固定大小的线程池
@@ -26,6 +29,9 @@ public class ThreadPoolIssues {
         }
     }
 
+    /**
+     * Executors创建单线程线程池
+     */
     @Test
     public void test02() {
         // 创建一个单线程的线程池
@@ -42,6 +48,9 @@ public class ThreadPoolIssues {
         }
     }
 
+    /**
+     * Executors创建线程数动态变化的线程池
+     */
     @Test
     public void test03() {
         // 可缓存线程池，线程数量不固定
@@ -59,6 +68,8 @@ public class ThreadPoolIssues {
     }
 
     /**
+     * 自定义线程池
+     *
      * new ThreadPoolExecutor(int corePoolSize,
      *                        int maximumPoolSize,
      *                        long keepAliveTime,
@@ -67,13 +78,13 @@ public class ThreadPoolIssues {
      *                        ThreadFactory threadFactory,
      *                        RejectedExecutionHandler handler)
      *
-     * corePoolSize：核心线程数量，即使线程处于空闲状态，也不会被销毁
-     * maximumPoolSize：线程池中允许的最大线程数量，当工作队列已满时，会继续创建非核心线程，直到达到该值
-     * keepAliveTime：非核心线程的存活时间
-     * unit：线程存活时间单位
-     * workQueue：用于存放待执行任务的阻塞队列
-     * threadFactory：自定义线程的创建方式，通常用于设置线程名、守护属性或优先级
-     * handler：拒绝策略
+     *  corePoolSize：核心线程数量，即使线程处于空闲状态，也不会被销毁
+     *  maximumPoolSize：线程池中允许的最大线程数量，当工作队列已满时，会继续创建非核心线程，直到达到该值
+     *  keepAliveTime：非核心线程的存活时间
+     *  unit：线程存活时间单位
+     *  workQueue：用于存放待执行任务的阻塞队列
+     *  threadFactory：自定义线程的创建方式，通常用于设置线程名、守护属性或优先级
+     *  handler：拒绝策略
      */
     @Test
     public void test04() {
