@@ -5,8 +5,10 @@ import org.junit.Test;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.function.BiConsumer;
-import java.util.function.Supplier;
 
+/**
+ * @author Mr.MC
+ */
 public class CompletableFutureIssues {
 
     /**
@@ -38,8 +40,8 @@ public class CompletableFutureIssues {
         completableFuture.whenComplete(new BiConsumer<Integer, Throwable>() {
 
             /**
-             * @param integer 返回值
-             * @param throwable 异常
+             * @param integer supplyAsync()方法返回值
+             * @param throwable supplyAsync()方法异常信息
              */
             @Override
             public void accept(Integer integer, Throwable throwable) {
