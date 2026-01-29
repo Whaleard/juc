@@ -39,16 +39,13 @@ public class FutureThreadPoolDemo {
 
         ExecutorService threadPool = Executors.newFixedThreadPool(3);
 
-        FutureTask<Integer> futureTask = new FutureTask<>(new Callable() {
-            @Override
-            public Integer call() {
-                try {
-                    TimeUnit.MILLISECONDS.sleep(500L);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                return 1024;
+        FutureTask<String> futureTask = new FutureTask<>(() -> {
+            try {
+                TimeUnit.MILLISECONDS.sleep(500L);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
+            return "task one is over";
         });
 
         /*
@@ -57,29 +54,23 @@ public class FutureThreadPoolDemo {
          */
         threadPool.submit(futureTask);
 
-        FutureTask<Integer> futureTask2 = new FutureTask<>(new Callable() {
-            @Override
-            public Integer call() {
-                try {
-                    TimeUnit.MILLISECONDS.sleep(500L);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                return 2048;
+        FutureTask<String> futureTask2 = new FutureTask<>(() -> {
+            try {
+                TimeUnit.MILLISECONDS.sleep(500L);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
+            return "task two is over";
         });
         threadPool.submit(futureTask2);
 
-        FutureTask<Integer> futureTask3 = new FutureTask<>(new Callable() {
-            @Override
-            public Integer call() {
-                try {
-                    TimeUnit.MILLISECONDS.sleep(500L);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                return 4096;
+        FutureTask<String> futureTask3 = new FutureTask<>(() -> {
+            try {
+                TimeUnit.MILLISECONDS.sleep(500L);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
+            return "task three is over";
         });
         threadPool.submit(futureTask3);
 
