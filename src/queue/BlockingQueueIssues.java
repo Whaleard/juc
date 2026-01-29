@@ -22,7 +22,7 @@ public class BlockingQueueIssues {
         BlockingQueue blockingQueue = new ArrayBlockingQueue(3);
 
         /*
-            add()：插入元素
+            add(E e)：插入元素
                   当阻塞队列不满时，往队列里插入元素返回true
                   当阻塞队列满时，往队列里插入元素抛出异常 java.lang.IllegalStateException: Queue full
          */
@@ -52,7 +52,7 @@ public class BlockingQueueIssues {
         BlockingQueue blockingQueue = new ArrayBlockingQueue(3);
 
         /*
-            offer()：插入元素
+            offer(E e)：插入元素
                     成功返回true
                     失败返回false
          */
@@ -82,7 +82,7 @@ public class BlockingQueueIssues {
         BlockingQueue blockingQueue = new ArrayBlockingQueue(3);
 
         /*
-            put()：插入元素
+            put(E e)：插入元素
                   没有返回值
                   当阻塞队列满时，生产者线程往队列里插入元素，队列会阻塞生产者线程直到插入元素或者响应中断退出
          */
@@ -112,7 +112,7 @@ public class BlockingQueueIssues {
         BlockingQueue blockingQueue = new ArrayBlockingQueue(3);
 
         /*
-            offer()：插入元素
+            offer(E e, long timeout, TimeUnit unit)：插入元素
                     成功返回true
                     当阻塞队列满时，队列会阻塞生产者线程一定时间，通过限时后生产者线程会退出并返回false
          */
@@ -122,7 +122,7 @@ public class BlockingQueueIssues {
         System.out.println(blockingQueue.offer("d", 3L, TimeUnit.SECONDS));
 
         /*
-            poll()：移除元素
+            poll(long timeout, TimeUnit unit)：移除元素
                    成功返回出队列元素
                    当阻塞队列空时，队列会阻塞消费者线程一定时间，通过限时后消费者线程会退出并返回null
          */
