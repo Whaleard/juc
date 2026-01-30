@@ -22,18 +22,15 @@ public class FutureAPIDemo {
      */
     @Test
     public void test01() throws ExecutionException, InterruptedException {
-        FutureTask<String> futureTask = new FutureTask<>(new Callable<String>() {
-            @Override
-            public String call() {
-                System.out.println(Thread.currentThread().getName() + "======come in");
-                // 暂停几秒钟
-                try {
-                    TimeUnit.SECONDS.sleep(5L);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                return "task over";
+        FutureTask<String> futureTask = new FutureTask<>(() -> {
+            System.out.println(Thread.currentThread().getName() + "======come in");
+            // 暂停几秒钟
+            try {
+                TimeUnit.SECONDS.sleep(5L);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
+            return "task over";
         });
 
         Thread t1 = new Thread(futureTask, "t1");
@@ -56,18 +53,15 @@ public class FutureAPIDemo {
      */
     @Test
     public void test02() throws ExecutionException, InterruptedException, TimeoutException {
-        FutureTask<String> futureTask = new FutureTask<>(new Callable<String>() {
-            @Override
-            public String call() {
-                System.out.println(Thread.currentThread().getName() + "======come in");
-                // 暂停几秒钟
-                try {
-                    TimeUnit.SECONDS.sleep(5L);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                return "task over";
+        FutureTask<String> futureTask = new FutureTask<>(() -> {
+            System.out.println(Thread.currentThread().getName() + "======come in");
+            // 暂停几秒钟
+            try {
+                TimeUnit.SECONDS.sleep(5L);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
+            return "task over";
         });
 
         Thread t1 = new Thread(futureTask, "t1");
@@ -92,18 +86,15 @@ public class FutureAPIDemo {
      */
     @Test
     public void test03() throws ExecutionException, InterruptedException {
-        FutureTask<String> futureTask = new FutureTask<>(new Callable<String>() {
-            @Override
-            public String call() {
-                System.out.println(Thread.currentThread().getName() + "======come in");
-                // 暂停几秒钟
-                try {
-                    TimeUnit.SECONDS.sleep(5L);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                return "task over";
+        FutureTask<String> futureTask = new FutureTask<>(() -> {
+            System.out.println(Thread.currentThread().getName() + "======come in");
+            // 暂停几秒钟
+            try {
+                TimeUnit.SECONDS.sleep(5L);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
+            return "task over";
         });
 
         Thread t1 = new Thread(futureTask, "t1");
@@ -111,6 +102,10 @@ public class FutureAPIDemo {
 
         System.out.println(Thread.currentThread().getName() + "======忙其他任务了");
 
+        /*
+            由于get()方法会阻塞线程，故采用while(true)循环中调用isDone()方法判断FutureTask任务是否执行完成，
+            而由于isDone()方法容易消耗CPU资源，通过调用sleep()方法可以减少CPU的消耗
+         */
         while (true) {
             if (futureTask.isDone()) {
                 System.out.println(futureTask.get());
