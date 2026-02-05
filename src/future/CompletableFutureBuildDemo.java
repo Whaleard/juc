@@ -25,16 +25,13 @@ public class CompletableFutureBuildDemo {
      */
     @Test
     public void test01() throws ExecutionException, InterruptedException {
-        CompletableFuture<Void> completableFuture = CompletableFuture.runAsync(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println(Thread.currentThread().getName());
-                // 暂停几秒钟线程
-                try {
-                    TimeUnit.SECONDS.sleep(1L);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+        CompletableFuture<Void> completableFuture = CompletableFuture.runAsync(() -> {
+            System.out.println(Thread.currentThread().getName());
+            // 暂停几秒钟线程
+            try {
+                TimeUnit.SECONDS.sleep(3L);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         });
 
@@ -53,16 +50,13 @@ public class CompletableFutureBuildDemo {
     public void test02() throws ExecutionException, InterruptedException {
         ExecutorService threadPool = Executors.newFixedThreadPool(3);
 
-        CompletableFuture<Void> completableFuture = CompletableFuture.runAsync(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println(Thread.currentThread().getName());
-                // 暂停几秒钟线程
-                try {
-                    TimeUnit.SECONDS.sleep(1L);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+        CompletableFuture<Void> completableFuture = CompletableFuture.runAsync(() -> {
+            System.out.println(Thread.currentThread().getName());
+            // 暂停几秒钟线程
+            try {
+                TimeUnit.SECONDS.sleep(3L);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }, threadPool);
 
@@ -70,42 +64,52 @@ public class CompletableFutureBuildDemo {
 
         threadPool.shutdown();
     }
-    
+
+    /**
+     * supplyAsync(Callable callable)方法：
+     *      有返回值
+     *      没有指定Executor，使用默认的ForkJoinPool.commonPool()作为线程池执行异步代码
+     *
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
     @Test
     public void test03() throws ExecutionException, InterruptedException {
-        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(new Supplier<String>() {
-            @Override
-            public String get() {
-                System.out.println(Thread.currentThread().getName());
-                // 暂停几秒钟线程
-                try {
-                    TimeUnit.SECONDS.sleep(1L);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                return "hello supplyAsync";
+        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> {
+            System.out.println(Thread.currentThread().getName());
+            // 暂停几秒钟线程
+            try {
+                TimeUnit.SECONDS.sleep(3L);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
+            return "hello supplyAsync";
         });
 
         System.out.println(completableFuture.get());
     }
 
+    /**
+     * supplyAsync(Callable callable, Executor executor)方法：
+     *      有返回值
+     *      指定了Executor，使用指定的线程池执行异步代码
+     *
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
     @Test
     public void test04() throws ExecutionException, InterruptedException {
         ExecutorService threadPool = Executors.newFixedThreadPool(3);
 
-        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(new Supplier<String>() {
-            @Override
-            public String get() {
-                System.out.println(Thread.currentThread().getName());
-                // 暂停几秒钟线程
-                try {
-                    TimeUnit.SECONDS.sleep(1L);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                return "hello supplyAsync";
+        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> {
+            System.out.println(Thread.currentThread().getName());
+            // 暂停几秒钟线程
+            try {
+                TimeUnit.SECONDS.sleep(3L);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
+            return "hello supplyAsync";
         }, threadPool);
 
         System.out.println(completableFuture.get());
