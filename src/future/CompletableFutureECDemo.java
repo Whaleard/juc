@@ -1,5 +1,7 @@
 package future;
 
+import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -51,7 +53,7 @@ public class CompletableFutureECDemo {
     }
 
     /**
-     *
+     * 使用CompletableFuture实现并发搜索
      *
      * @param list
      * @param productName
@@ -60,31 +62,42 @@ public class CompletableFutureECDemo {
     public static List<String> getPriceByCompletableFuture(List<NetMall> list, String productName) {
         return list.stream()
                 .map(netMall ->
-                        CompletableFuture.supplyAsync(new Supplier<String>() {
-                            @Override
-                            public String get() {
-                                return String.format(productName + "in %s price is %.2f",
-                                        netMall.getName(),
-                                        netMall.calcPrice(productName));
-                            }
-                        }))
+                        CompletableFuture.supplyAsync(() -> String.format(productName + "in %s price is %.2f",
+                                netMall.getName(),
+                                netMall.calcPrice(productName))))
                 .collect(Collectors.toList())
                 .stream()
                 .map(s -> s.join())
                 .collect(Collectors.toList());
     }
 
-    public static void main(String[] args) {
+    /**
+     * 同步耗时测试
+     */
+    @Test
+    public void testSync() {
         long startTime = System.currentTimeMillis();
+        // 顺序执行
         List<String> result = getPrice(list, "《mysql》");
         for (String str : result) {
             System.out.println(str);
         }
         long endTime = System.currentTimeMillis();
+        System.out.println("======costTime：" + (endTime - startTime) + "毫秒");
+    }
+
+    /**
+     * 异步耗时测试
+     */
+    @Test
+    public void testAsync() {
+        long startTime = System.currentTimeMillis();
+        // 并发执行
         List<String> result2 = getPriceByCompletableFuture(list, "《mysql》");
         for (String str : result2) {
             System.out.println(str);
         }
+        long endTime = System.currentTimeMillis();
         System.out.println("======costTime：" + (endTime - startTime) + "毫秒");
     }
 }
