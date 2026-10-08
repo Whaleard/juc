@@ -2,9 +2,6 @@ package lock;
 
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * 第一步：创建资源类，定义属性和操作方法
- */
 class Ticket {
     /**
      * 票数
@@ -14,7 +11,8 @@ class Ticket {
     /**
      * 创建可重入锁
      *
-     * new ReentrantLock()默认创建非公平锁，若入参为true则创建公平锁，入参为false创建非公平锁
+     * public ReentrantLock()默认创建非公平锁，
+     * public ReentrantLock(boolean fair)若入参为true则创建公平锁，入参为false创建非公平锁
      */
     private final ReentrantLock lock = new ReentrantLock();
 
@@ -37,11 +35,11 @@ class Ticket {
 }
 
 /**
- * 第二步：创建多个线程，调用资源类的操作方法
+ * 公平锁与非公平锁案例
  *
  * @author Mr.MC
  */
-public class SaleTicket {
+public class FairAndNonFairLock {
 
     public static void main(String[] args) {
         // 创建Ticket对象
