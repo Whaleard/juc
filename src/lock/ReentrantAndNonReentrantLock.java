@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * ReentrantLock为显示可重入锁
+ * 显示可重入锁ReentrantLock
  *
  * @author Mr.MC
  */
