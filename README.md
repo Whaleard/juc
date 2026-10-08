@@ -117,8 +117,9 @@ Lock和synchronized不同点：
     3、破坏循环等待条件：强制所有线程按照固定顺序申请锁，避免交叉等待
 
 验证是否是死锁
-    1、jps（类似linux ps -ef）
-    2、jstack（jvm自带堆栈跟踪工具）
+    1、jps -l（类似linux ps -ef）
+    2、jstack 进程号（jvm自带堆栈跟踪工具）
+    3、jconsole
 
 阻塞队列：
     1、ArrayBlockingQueue

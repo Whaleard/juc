@@ -2,6 +2,9 @@ package lock;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 死锁案例
+ */
 public class DeadLock {
 
     public static Object a = new Object();
