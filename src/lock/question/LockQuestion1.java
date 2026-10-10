@@ -1,4 +1,4 @@
-package lockcase;
+package lock.question;
 
 import java.util.concurrent.TimeUnit;
 

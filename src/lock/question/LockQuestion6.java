@@ -1,8 +1,8 @@
-package lockcase;
+package lock.question;
 
 import java.util.concurrent.TimeUnit;
 
-class Phone5 {
+class Phone6 {
 
     public static synchronized void sendEmail() {
         System.out.println("============sendEmail============");
@@ -19,16 +19,17 @@ class Phone5 {
 }
 
 /**
- * 问题五：两个静态同步方法，一部手机，先打印短信还是邮件
+ * 问题六：两个静态同步方法，两部手机，先打印短信还是邮件
  * ============sendSMS============
  * ============sendEmail============
  *
  * @author Mr.MC
  */
-public class LockQuestion5 {
+public class LockQuestion6 {
 
     public static void main(String[] args) {
-        Phone5 phone = new Phone5();
+        Phone6 phone = new Phone6();
+        Phone6 phone2 = new Phone6();
 
         new Thread(() -> phone.sendSMS(), "A").start();
 
@@ -38,6 +39,6 @@ public class LockQuestion5 {
             throw new RuntimeException(e);
         }
 
-        new Thread(() -> phone.sendEmail(), "B").start();
+        new Thread(() -> phone2.sendEmail(), "B").start();
     }
 }

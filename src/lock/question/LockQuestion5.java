@@ -1,14 +1,14 @@
-package lockcase;
+package lock.question;
 
 import java.util.concurrent.TimeUnit;
 
-class Phone4 {
+class Phone5 {
 
-    public synchronized void sendEmail() {
+    public static synchronized void sendEmail() {
         System.out.println("============sendEmail============");
     }
 
-    public synchronized void sendSMS() {
+    public static synchronized void sendSMS() {
         try {
             TimeUnit.SECONDS.sleep(3L);
         } catch (InterruptedException e) {
@@ -19,23 +19,18 @@ class Phone4 {
 }
 
 /**
- * 问题四：现在有两部手机，先打印短信还是邮件
- * ============sendEmail============
+ * 问题五：两个静态同步方法，一部手机，先打印短信还是邮件
  * ============sendSMS============
- *
- * 锁对象不一致不会产生冲突
+ * ============sendEmail============
  *
  * @author Mr.MC
  */
-public class LockQuestion4 {
+public class LockQuestion5 {
 
     public static void main(String[] args) {
-        Phone4 phone = new Phone4();
-        Phone4 phone2 = new Phone4();
+        Phone5 phone = new Phone5();
 
-        new Thread(() -> {
-            phone.sendSMS();
-        }, "A").start();
+        new Thread(() -> phone.sendSMS(), "A").start();
 
         try {
             TimeUnit.MILLISECONDS.sleep(200L);
@@ -43,8 +38,6 @@ public class LockQuestion4 {
             throw new RuntimeException(e);
         }
 
-        new Thread(() -> {
-            phone2.sendEmail();
-        }, "B").start();
+        new Thread(() -> phone.sendEmail(), "B").start();
     }
 }
