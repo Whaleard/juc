@@ -38,6 +38,12 @@ public class InterruptDemo {
         new Thread(() -> {
             isStop = true;
         }, "t2").start();
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(10);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -64,6 +70,12 @@ public class InterruptDemo {
         new Thread(() -> {
             atomicBoolean.set(true);
         }, "t2").start();
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(10);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -93,5 +105,11 @@ public class InterruptDemo {
             // public void interrupt()实例方法仅仅是设置线程的中断状态为true，发起一个协商而不会立刻停止线程
             t1.interrupt();
         }, "t2").start();
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(10);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
