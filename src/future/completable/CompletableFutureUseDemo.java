@@ -1,4 +1,4 @@
-package future;
+package future.completable;
 
 import java.util.concurrent.*;
 import java.util.logging.Logger;

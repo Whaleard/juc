@@ -1,4 +1,4 @@
-package completable;
+package future.completable;
 
 import org.junit.Test;
 
