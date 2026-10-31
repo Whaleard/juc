@@ -1,4 +1,4 @@
-package read_write;
+package readwrite;
 
 import java.util.HashMap;
 import java.util.Map;

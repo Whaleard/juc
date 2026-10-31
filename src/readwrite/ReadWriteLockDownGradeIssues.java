@@ -1,4 +1,4 @@
-package read_write;
+package readwrite;
 
 import org.junit.Test;
 
