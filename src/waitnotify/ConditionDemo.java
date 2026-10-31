@@ -1,4 +1,4 @@
-package wait_notify;
+package waitnotify;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
@@ -8,7 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * 使用JUC包中Condition的await()和signal()方法实现线程等待唤醒机制
  */
-public class LockSupportDemo2 {
+public class ConditionDemo {
 
     /**
      * await()和signal()必须持有创建该Condition的同一把Lock锁，否则会直接抛出IllegalMonitorStateException异常

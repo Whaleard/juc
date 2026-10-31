@@ -1,11 +1,11 @@
-package wait_notify;
+package waitnotify;
 
 import java.util.concurrent.TimeUnit;
 
 /**
  * 通过Object类中的wait()和notify()方法实现线程等待唤醒机制
  */
-public class LockSupportDemo {
+public class ObjectDemo {
 
     /**
      * wait()和notify()操作的是对象的监视器（Monitor），JVM强制要求调用线程必须持有该对象的锁。

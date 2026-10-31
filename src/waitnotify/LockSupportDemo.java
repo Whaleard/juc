@@ -1,4 +1,4 @@
-package wait_notify;
+package waitnotify;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.LockSupport;
@@ -6,7 +6,7 @@ import java.util.concurrent.locks.LockSupport;
 /**
  * 使用LockSupport的park()和unpark()方法实现线程等待唤醒机制
  */
-public class LockSupportDemo3 {
+public class LockSupportDemo {
 
     /**
      * park()和unpark()方法不需要获取锁，且支持先唤醒后等待
